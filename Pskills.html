@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .image-container {
+      position: relative;
+    }
+
+    .stacked-image {
+      position: absolute;
+      top: 0;
+      left: 220px;
+      width: 756px;
+      max-width: 100%;
+      min-width: 0;
+      height: auto;
+    }
+
+    body {
+      background-image: url("./image/space.png");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-color: black;
+      color: white;
+      margin: 0;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 220px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+    }
+      
+    .sidenav a {
+      color: purple;
+      padding: 16px;
+      text-decoration: none;
+      display: block;
+    }
+      
+    .sidenav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .logo {
+      width: 220px;
+      height: 200px;
+      position: relative;
+      float: inherit;
+      align-self: stretch;
+    }
+
+    .dropbtn {
+      color: purple;
+      padding: 16px;
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      cursor: pointer;
+    }
+    
+    .dropdown {
+      position: relative;
+      display: block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: black;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: purple;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown-content a:hover {background-color: #d1e7ee}
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+      position: absolute;
+      left: 100%;
+      top: 0;
+    }
+  
+    .dropdown:hover .dropbtn {
+      background-color: #d1e7ee;
+    }
+
+    footer {
+      text-align: center;
+      position: fixed;
+      bottom: -4px;
+      left: 38%;
+    }
+
+    .lot1{
+        position: absolute;
+        top: 230px;
+        left: 410px;
+        font-size: xx-large;
+    }
+
+    .lot2{
+        position: absolute;
+        top: 260px;
+        left: 403px;
+        font-size: xx-large;
+    }
+
+/*Modal code*/
+.learning-outcome1{
+width: 800px;
+padding: 10px;
+border-radius: 25px;
+background-color: black;
+color: purple;
+text-indent: 10px;
+top: 225px;
+left: 700px;
+position: absolute;
+margin: 10px;
+font-size: 28px;
+}
+
+.learning-outcome2{
+    width: 800px;
+    padding: 10px;
+    border-radius: 25px;
+    background-color: black;
+    color: purple;
+    text-indent: 10px;
+    top: 300px;
+    left: 700px;
+    position: absolute;
+    margin: 10px;
+    font-size: 28px;
+}
+
+.learning-outcome3{
+    width: 800px;
+    padding: 10px;
+    border-radius: 25px;
+    background-color: black;
+    color: purple;
+    text-indent: 10px;
+    top: 375px;
+    left: 700px;
+    position: absolute;
+    margin: 10px;
+    font-size: 28px;
+}
+
+.learning-outcome4{
+    width: 800px;
+    padding: 10px;
+    border-radius: 25px;
+    background-color: black;
+    color: purple;
+    text-indent: 10px;
+    top: 450px;
+    left: 700px;
+    position: absolute;
+    margin: 10px;
+    font-size: 28px;
+}
+
+.learning-outcome5{
+    width: 800px;
+    padding: 10px;
+    border-radius: 25px;
+    background-color: black;
+    color: purple;
+    text-indent: 10px;
+    top: 525px;
+    left: 700px;
+    position: absolute;
+    margin: 10px;
+    font-size: 28px;
+}
+
+.modalbutton1{
+    left: 1450px;
+    top: 250px;
+    position: absolute;
+    background-color: black;
+    color: white;
+}
+
+.modalbutton2{
+    left: 1450px;
+    top: 325px;
+    position: absolute;
+    background-color: black;
+    color: white;
+}
+
+.modalbutton3{
+    left: 1450px;
+    top: 400px;
+    position: absolute;
+    background-color: black;
+    color: white;
+}
+
+.modalbutton4{
+    left: 1450px;
+    top: 475px;
+    position: absolute;
+    background-color: black;
+    color: white;
+}
+
+.modalbutton5{
+    left: 1450px;
+    top: 550px;
+    position: absolute;
+    background-color: black;
+    color: white;
+}
+
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    font-size: 20px;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  
+  /* Add Animation */
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+  
+  /* The Close Button */
+  .close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal-header {
+    padding: 5px 16px;
+    background-color: purple;
+    color: white;
+  }
+  
+  .modal-body {
+    padding: 10px 16px;
+    background-color: black;
+    text-align: left;
+  }
+  
+  .modal-footer {
+    padding: 2px 16px;
+    background-color: purple;
+    color: white;
+  }
+
+    @media (max-width: 768px) {
+      .stacked-image {
+        width: 100%;
+        left: 0;
+      }
+
+      .logo {
+        width: 50px;
+        height: 50px;
+        top: 0;
+        left: 13px;
+      }
+
+      .sidenav {
+        height: 50px;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+      }
+
+      .sidenav a {
+        color: purple;
+        padding: 16px;
+        text-decoration: none;
+        display: block;
+        float: left;
+      }
+      
+      .sidenav a:hover {
+        background-color: #0c0c0c;
+        color: purple;
+      }
+
+    .dropbtn {
+      color: purple;
+      padding: 14px;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+      left: 230px;
+      top: -50px;
+      position: relative;
+      width: 180px;
+      text-align: center;
+    }
+    
+    .dropdown {
+      position: absolute;
+      display: block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: black;
+      min-width: 212px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: purple;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown-content a:hover {background-color: #0c0c0c}
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+      left: 230px;
+      top: -5px;
+    }
+  
+    .dropdown:hover .dropbtn {
+      background-color: #0c0c0c;
+    }
+
+    footer {
+      text-align: center;
+      position: fixed;
+      bottom: -4px;
+      left: 0;
+    }
+
+    .footeri{
+      width: 100%;
+    }
+
+    .lot1{
+        position: absolute;
+        top: 138px;
+        left: 115px;
+        font-size: 20px;
+    }
+
+    .lot2{
+        position: absolute;
+        top: 158px;
+        left: 110px;
+        font-size: 20px;
+    }
+
+    /*Modal code*/
+    .learning-outcome1{
+        width: 350px;
+        padding: 10px;
+        border-radius: 25px;
+        background-color: black;
+        color: purple;
+        text-indent: 10px;
+        top: 280px;
+        left: 50px;
+        position: absolute;
+        margin: 10px;
+        font-size: 20px;
+    }
+
+    .learning-outcome2{
+        width: 350px;
+        padding: 10px;
+        border-radius: 25px;
+        background-color: black;
+        color: purple;
+        text-indent: 10px;
+        top: 355px;
+        left: 50px;
+        position: absolute;
+        margin: 10px;
+        font-size: 20px;
+    }
+
+    .learning-outcome3{
+        width: 350px;
+        padding: 10px;
+        border-radius: 25px;
+        background-color: black;
+        color: purple;
+        text-indent: 10px;
+        top: 430px;
+        left: 50px;
+        position: absolute;
+        margin: 10px;
+        font-size: 20px;
+    }
+
+    .learning-outcome4{
+        width: 350px;
+        padding: 10px;
+        border-radius: 25px;
+        background-color: black;
+        color: purple;
+        text-indent: 10px;
+        top: 505px;
+        left: 50px;
+        position: absolute;
+        margin: 10px;
+        font-size: 20px;
+    }
+
+    .learning-outcome5{
+        width: 350px;
+        padding: 10px;
+        border-radius: 25px;
+        background-color: black;
+        color: purple;
+        text-indent: 10px;
+        top: 580px;
+        left: 50px;
+        position: absolute;
+        margin: 10px;
+        font-size: 20px;
+    }
+
+    .modalbutton1{
+        left: 380px;
+        top: 300px;
+        position: absolute;
+        background-color: black;
+        color: white;
+    }
+
+    .modalbutton2{
+        left: 380px;
+        top: 375px;
+        position: absolute;
+        background-color: black;
+        color: white;
+    }
+
+    .modalbutton3{
+        left: 380px;
+        top: 450px;
+        position: absolute;
+        background-color: black;
+        color: white;
+    }
+
+    .modalbutton4{
+        left: 380px;
+        top: 525px;
+        position: absolute;
+        background-color: black;
+        color: white;
+    }
+
+    .modalbutton5{
+        left: 380px;
+        top: 600px;
+        position: absolute;
+        background-color: black;
+        color: white;
+    }
+
+    }
+  </style>
+  <title>Professional Skills</title>
+</head>
+<body>
+  <div class="sidenav">
+    <img class="logo" src="image/logo.png" alt="logo">
+    <a href="index.html">Home</a>
+    <a href="about_me.html">About me</a>
+    <div class="dropdown">
+      <div class="dropbtn">Learning Outcome</div>
+      <div class="dropdown-content">
+        <a href="Pskills.html">Professional Skills</a>
+        <a href="Tskills.html">Technical Skills</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="image-container">
+    <img src="image/design5.png" alt="Image 5" class="stacked-image">
+    <div class="lot1">Prof</div>
+    <div class="lot2">Skills</div>
+  </div>
+
+  <div class="learning-outcome1">Future-oriented Organisation</div>
+  <!-- Trigger/Open The Modal -->
+<button class="modalbutton1" id="myBtn1">V</button>
+
+<!-- The Modal -->
+<div id="myModal1" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 style="text-align: center; font-size: 30px;">Future-oriented Organisation</h2>
+    </div>
+    <div class="modal-body">
+      <p>For this skill me and my group have talked about schedules and deadlines for the project, we have made some planning and have communicated on who does what part of the project.</p>
+    </div>
+  </div>
+
+</div>
+  <div class="learning-outcome2">Investigative Problem Solving</div>
+    <!-- Trigger/Open The Modal -->
+<button class="modalbutton2" id="myBtn2">V</button>
+
+<!-- The Modal -->
+<div id="myModal2" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 style="text-align: center;">Investigative Problem Solving</h2>
+    </div>
+    <div class="modal-body">
+      <p>For this skill I have asked some questions to teachers and students whenever I asked for feedback (which isn’t much). But most of my problem solving was done through the internet by doing research on the topic I am stuck on and finding a solution to my problem by reading community forums or blogs.</p>
+    </div>
+  </div>
+
+</div>
+  <div class="learning-outcome3">Personal Leadership</div>
+    <!-- Trigger/Open The Modal -->
+<button class="modalbutton3" id="myBtn3">V</button>
+
+<!-- The Modal -->
+<div id="myModal3" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 style="text-align: center;">Personal Leadership</h2>
+    </div>
+    <div class="modal-body">
+      <p>I will say that I am a bit lacking in this skill, my reasons being:<br>
+        - I'm not one to seize opportunities unless it is something that really catches my interest<br>
+        - I am open to feedback but I don't ask for it much as I am used to working on my own and just following what was given to me to do. So I just do my best and wait for the result when I show my finished product or assignment.
+        <br>
+        As for the good parts:<br>
+        - I take responsibility for my actions.<br>
+        - I recognize learning needs in myself and reflect on the feedback that's given to me.
+        </p>
+    </div>
+  </div>
+
+</div>
+  <div class="learning-outcome4">Targeted Interaction</div>
+    <!-- Trigger/Open The Modal -->
+<button class="modalbutton4" id="myBtn4">V</button>
+
+<!-- The Modal -->
+<div id="myModal4" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 style="text-align: center;">Targeted Interaction</h2>
+    </div>
+    <div class="modal-body">
+      <p>All I can say for this skill is that I have stuck to my role in the group and have communicated about behaviors of others here and there.</p>
+    </div>
+  </div>
+
+</div>
+<div class="learning-outcome5">Reflection</div>
+<!-- Trigger/Open The Modal -->
+<button class="modalbutton5" id="myBtn5">V</button>
+
+<!-- The Modal -->
+<div id="myModal5" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+    <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2 style="text-align: center;">Reflection</h2>
+    </div>
+    <div class="modal-body">
+        <p>My reflection for Professional Skills.</p>
+        <p>I can't really say much here as I myself don't speak much to the teachers or ask for feedback much but from what I have noticed, I have to talk more and be more verbal instead of doing everything alone.</p>
+    </div>
+    </div>
+
+</div>
+</body>
+  <footer>
+    <img class="footeri" src="image/footer.png" alt="footeri">
+  </footer>
+
+<script>
+    // Get the modal
+    var modal1 = document.getElementById("myModal1");
+    // Get the button that opens the modal
+    var btn1 = document.getElementById("myBtn1");
+    // Get the <span> element that closes the modal
+    var span1 = document.getElementsByClassName("close")[0];
+    // When the user clicks the button, open the modal 
+    btn1.onclick = function() {
+      modal1.style.display = "block";
+    }
+    // When the user clicks on <span> (x), close the modal
+    span1.onclick = function() {
+      modal1.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal2) {
+        modal1.style.display = "none";
+      }
+    }
+  
+    // Get the modal
+    var modal2 = document.getElementById("myModal2");
+    // Get the button that opens the modal
+    var btn2 = document.getElementById("myBtn2");
+    // Get the <span> element that closes the modal
+    var span2 = document.getElementsByClassName("close")[1];
+    // When the user clicks the button, open the modal 
+    btn2.onclick = function() {
+      modal2.style.display = "block";
+    }
+    // When the user clicks on <span> (x), close the modal
+    span2.onclick = function() {
+      modal2.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal2) {
+        modal2.style.display = "none";
+      }
+    }
+  
+    // Get the modal
+    var modal3 = document.getElementById("myModal3");
+    // Get the button that opens the modal
+    var btn3 = document.getElementById("myBtn3");
+    // Get the <span> element that closes the modal
+    var span3 = document.getElementsByClassName("close")[2];
+    // When the user clicks the button, open the modal 
+    btn3.onclick = function() {
+      modal3.style.display = "block";
+    }
+    // When the user clicks on <span> (x), close the modal
+    span3.onclick = function() {
+      modal3.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal3) {
+        modal3.style.display = "none";
+      }
+    }
+  
+    // Get the modal
+    var modal4 = document.getElementById("myModal4");
+    // Get the button that opens the modal
+    var btn4 = document.getElementById("myBtn4");
+    // Get the <span> element that closes the modal
+    var span4 = document.getElementsByClassName("close")[3];
+    // When the user clicks the button, open the modal 
+    btn4.onclick = function() {
+      modal4.style.display = "block";
+    }
+    // When the user clicks on <span> (x), close the modal
+    span4.onclick = function() {
+      modal4.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal4) {
+        modal4.style.display = "none";
+      }
+    }
+  
+    // Get the modal
+    var modal5 = document.getElementById("myModal5");
+    // Get the button that opens the modal
+    var btn5 = document.getElementById("myBtn5");
+    // Get the <span> element that closes the modal
+    var span5 = document.getElementsByClassName("close")[4];
+    // When the user clicks the button, open the modal 
+    btn5.onclick = function() {
+      modal5.style.display = "block";
+    }
+    // When the user clicks on <span> (x), close the modal
+    span5.onclick = function() {
+      modal5.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal5) {
+        modal5.style.display = "none";
+      }
+    }
+    </script>
+  
+</html>

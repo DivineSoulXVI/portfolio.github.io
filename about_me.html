@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .image-container {
+      position: relative;
+    }
+
+    .stacked-image {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 756px;
+      max-width: 100%;
+      min-width: 0;
+      height: auto;
+    }
+
+    .stacked-image2 {
+      position: absolute;
+      top: 60px;
+      left: 320px;
+      width: 340px;
+      max-width: 100%;
+      min-width: 0;
+      height: auto;
+    }
+
+    .stacked-image3 {
+      position: absolute;
+      top: 200px;
+      right: 340px;
+      max-width: 100%;
+      min-width: 0;
+      height: auto;
+    }
+
+    .stacked-image4 {
+      position: absolute;
+      top: 90px;
+      left: 349px;
+      max-width: 280px;
+      min-width: 0;
+      height: auto;
+      border-radius: 50%;
+    }
+
+    body {
+      background-image: url("./image/space.png");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-color: black;
+      color: white;
+      margin: 0;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 220px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+    }
+      
+    .sidenav a {
+      color: purple;
+      padding: 16px;
+      text-decoration: none;
+      display: block;
+    }
+      
+    .sidenav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .logo {
+      width: 220px;
+      height: 200px;
+      position: relative;
+      float: inherit;
+      align-self: stretch;
+    }
+
+    .dropbtn {
+      color: purple;
+      padding: 16px;
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      cursor: pointer;
+    }
+    
+    .dropdown {
+      position: relative;
+      display: block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: black;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: purple;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown-content a:hover {background-color: #d1e7ee}
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+      position: absolute;
+      left: 100%;
+      top: 0;
+    }
+  
+    .dropdown:hover .dropbtn {
+      background-color: #d1e7ee;
+    }
+
+    footer {
+      text-align: center;
+      position: fixed;
+      bottom: -4px;
+      left: 38%;
+    }
+
+    .centered {
+      position: absolute;
+      top: 285px;
+      left: 1050px;
+      transform: translate(-50%, -50%);
+      font-size: xx-large;
+    }
+
+    .content-box{
+      width: 1100px;
+      height: 5300px;
+      padding: 15px;
+      background-color:rgb(0, 0, 0, 0);
+      color: white;
+      text-align: center;
+      margin-left: 350px;
+      margin-top: 420px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      word-wrap: break-word;
+      position: absolute;
+    }
+
+    .container {
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .skills {
+      text-align: right;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      color: white;
+    }
+
+    .html {width: 75%; background-color: black;}
+    .css {width: 75%; background-color: purple;}
+    .js {width: 10%; background-color: black;}
+    .presentation {width: 40%; background-color: purple;}
+
+    .slide_container, .slide_container2, .slide_container3, .slide_container4, .slide_container5 {
+      position: relative;
+    }
+
+    .mySlides, .mySlides2, .mySlides3, .mySlides4, .mySlides5 {
+      display: none;
+    }
+
+    .cursor {
+      cursor: pointer;
+    }
+
+    .prev,
+    .next,
+    .prev2,
+    .next2,
+    .prev3,
+    .next3,
+    .prev4,
+    .next4,
+    .prev5,
+    .next5  {
+      cursor: pointer;
+      position: absolute;
+      top: 40%;
+      width: auto;
+      padding: 16px;
+      margin-top: -50px;
+      color: purple;
+      font-weight: bold;
+      font-size: 20px;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .prev, .prev2, .prev3, .prev4, .prev5{
+      left: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .next, .next2, .next3, .next4, .next5 {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover,
+    .next:hover,
+    .prev2:hover,
+    .next2:hover,
+    .prev3:hover,
+    .next3:hover,
+    .prev4:hover,
+    .next4:hover,
+    .prev5:hover,
+    .next5:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+
+    .caption-container {
+      text-align: center;
+      background-color: #222;
+      padding: 2px 16px;
+      color: white;
+    }
+
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .column {
+      float: left;
+      width: 16.66%;
+    }
+
+    .column2{
+      float: left;
+      width: 50%;
+    }
+
+    .column3{
+      float: left;
+      width: 50%;
+    }
+
+    .column4{
+      float: left;
+      width: 16.66%;
+    }
+
+    .column5{
+      float: left;
+      width: 33.33%;
+    }
+
+    .demo, .demo2, .demo3, .demo4, .demo5 {
+      opacity: 0.6;
+    }
+
+
+    .active,
+    .demo:hover,
+    .demo2:hover,
+    .demo3:hover,
+    .demo4:hover,
+    .demo5:hover {
+      opacity: 1;
+    }
+
+    #myBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      z-index: 99;
+      border: 1px solid black;
+      outline: none;
+      background-color: purple;
+      color: black;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 18px;
+    }
+
+    #myBtn:hover {
+      background-color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .stacked-image {
+        width: 100%;
+      }
+
+      .stacked-image2 {
+        width: 60%;
+        top: 60px;
+        left: 60px;
+      }
+
+      .stacked-image3 {
+        width: 70%;
+        top: 350px;
+        left: 50px;
+      }
+
+      .stacked-image4 {
+        width: 225px;
+        height: auto;
+        top: 84px;
+        left: 83px;
+      }
+
+      .logo {
+        width: 50px;
+        height: 50px;
+        top: 0;
+        left: 13px;
+      }
+
+      .sidenav {
+        height: 50px;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+      }
+
+      .sidenav a {
+        color: purple;
+        padding: 16px;
+        text-decoration: none;
+        display: block;
+        float: left;
+      }
+      
+      .sidenav a:hover {
+        background-color: #0c0c0c;
+        color: purple;
+      }
+
+    .dropbtn {
+      color: purple;
+      padding: 14px;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+      left: 230px;
+      top: -50px;
+      position: relative;
+      width: 180px;
+      text-align: center;
+    }
+    
+    .dropdown {
+      position: absolute;
+      display: block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: black;
+      min-width: 212px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: purple;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown-content a:hover {background-color: #0c0c0c}
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+      left: 230px;
+      top: -5px;
+    }
+  
+    .dropdown:hover .dropbtn {
+      background-color: #0c0c0c;
+    }
+
+    footer {
+      text-align: center;
+      position: fixed;
+      bottom: -4px;
+      left: 0;
+    }
+
+    .footeri{
+      width: 100%;
+    }
+
+    .centered {
+      position: absolute;
+      top: 400px;
+      left: 210px;
+      transform: translate(-50%, -50%);
+      font-size: 30px;
+    }
+
+    .content-box{
+      width: 420px;
+      height: 3250px;
+      padding: 15px;
+      background-color:rgb(0, 0, 0, 0);
+      color: white;
+      text-align: center;
+      margin-left: 0px;
+      margin-top: 455px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      word-wrap: break-word;
+      position: absolute;
+    }
+
+    #myBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 18px;
+      z-index: 99;
+      border: 1px solid black;
+      outline: none;
+      background-color: purple;
+      color: black;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    }
+  </style>
+  <title>About Me</title>
+</head>
+<body>
+  <div class="sidenav">
+    <img class="logo" src="image/logo.png" alt="logo">
+    <a href="index.html">Home</a>
+    <a href="about_me.html">About me</a>
+    <div class="dropdown">
+      <div class="dropbtn">Learning Outcome</div>
+      <div class="dropdown-content">
+        <a href="Pskills.html">Professional Skills</a>
+        <a href="Tskills.html">Technical Skills</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="image-container">
+    <img src="image/design2.png" alt="Image 1" class="stacked-image">
+    <img src="image/design3.png" alt="Image 2" class="stacked-image2">
+    <img src="image/design4.png" alt="Image 3" class="stacked-image3">
+    <img src="image/me.png" alt="Image 4" class="stacked-image4">
+    <div class="centered">About Me</div>
+  </div>
+
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+  <div class="content-box">
+    <h1>My Info</h1>
+    <p style="font-size: large; text-align: justify;">Hello! My name is Riquentel Arrindell (or Ricky for short) and I am a student at Fontys University of Applied Sciences. <br> 
+      I am 22 years old and have a small bit of experience in making websites. <br> 
+      I come from Curacao and speak Dutch, English, Papiamentu and a bit of Spanish. <br> 
+      My ideal work environment would be one where I don't have to communicate much and can just do what I have to do in peace. <br> 
+      But I am a flexible person.
+    </p>
+    <div style="background-color:black; height:2px;"></div>
+    <h1>My Skills</h1>
+    <h3>HTML</h3>
+    <div class="container">
+      <div class="skills html">75%</div>
+    </div>
+
+    <h3>CSS</h3>
+    <div class="container">
+      <div class="skills css">75%</div>
+    </div>
+
+    <h3>JavaScript</h3>
+    <div class="container">
+      <div class="skills js">10%</div>
+    </div>
+
+    <h3>Presenting</h3>
+    <div class="container">
+      <div class="skills presentation">40%</div>
+    </div>
+
+    <div style="background-color:black; height:2px; margin-top: 10px;"></div>
+
+    <h1>My Projects</h1>
+
+    <h2>Project 1</h2>
+    <p style="text-align: justify;">This was my first ever website. As a school assignment we were tasked to make a website with a given topic, ours was a pharmacy.</p>
+    <div class="slide_container">
+
+      <div class="mySlides">
+        <div class="numbertext">1 / 6</div>
+          <img src="project_images/project1.png" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">2 / 6</div>
+          <img src="project_images/project2.png" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">3 / 6</div>
+          <img src="project_images/project3.png" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">4 / 6</div>
+          <img src="project_images/project4.png" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">5 / 6</div>
+          <img src="project_images/project5.png" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">6 / 6</div>
+          <img src="project_images/project6.png" style="width:100%">
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+      <div class="row">
+        <div class="column">
+          <img class="demo cursor" src="project_images/project1.png" style="width:100%" onclick="currentSlide(1)" alt="Home Page">
+        </div>
+        <div class="column">
+          <img class="demo cursor" src="project_images/project2.png" style="width:100%" onclick="currentSlide(2)" alt="Products Page">
+        </div>
+        <div class="column">
+          <img class="demo cursor" src="project_images/project3.png" style="width:100%" onclick="currentSlide(3)" alt="Product Page">
+        </div>
+        <div class="column">
+          <img class="demo cursor" src="project_images/project4.png" style="width:100%" onclick="currentSlide(4)" alt="Payment Page">
+        </div>
+        <div class="column">
+          <img class="demo cursor" src="project_images/project5.png" style="width:100%" onclick="currentSlide(5)" alt="Terms&Conditions Page">
+        </div>
+        <div class="column">
+          <img class="demo cursor" src="project_images/project6.png" style="width:100%" onclick="currentSlide(6)" alt="Contact Page">
+        </div>
+      </div>
+    </div>
+    <div style="background-color:black; height:2px;"></div>
+
+    <h2>Project 2</h2>
+    <p style="text-align: justify;">For this project I was tasked with making a website for a teacher's photography business.</p>
+    <div class="slide_container2">
+
+      <div class="mySlides2">
+        <div class="numbertext">1 / 2</div>
+          <img src="project_images/project7.png" style="width:100%">
+      </div>
+
+      <div class="mySlides2">
+        <div class="numbertext">2 / 2</div>
+          <img src="project_images/project8.png" style="width:100%">
+      </div>
+
+      <a class="prev2" onclick="plusSlides2(-1)">&#10094;</a>
+      <a class="next2" onclick="plusSlides2(1)">&#10095;</a>
+
+      <div class="row">
+        <div class="column2">
+          <img class="demo cursor" src="project_images/project7.png" style="width:100%" onclick="currentSlide2(1)" alt="Home Page">
+        </div>
+        <div class="column2">
+          <img class="demo cursor" src="project_images/project8.png" style="width:100%" onclick="currentSlide2(2)" alt="Products Page">
+        </div>
+      </div>
+    </div>
+    <div style="background-color:black; height:2px;"></div>
+
+    <h2>Project 3</h2>
+    <p style="text-align: justify;">This project was my first time working with WordPress. These are the 2 pages I was tasked with making.</p>
+    <div class="slide_container3">
+
+      <div class="mySlides3">
+        <div class="numbertext">1 / 2</div>
+          <img src="project_images/project9.png" style="width:100%">
+      </div>
+
+      <div class="mySlides3">
+        <div class="numbertext">2 / 2</div>
+          <img src="project_images/project10.png" style="width:100%">
+      </div>
+
+      <a class="prev3" onclick="plusSlides3(-1)">&#10094;</a>
+      <a class="next3" onclick="plusSlides3(1)">&#10095;</a>
+
+      <div class="row">
+        <div class="column3">
+          <img class="demo cursor" src="project_images/project9.png" style="width:100%" onclick="currentSlide3(1)" alt="Home Page">
+        </div>
+        <div class="column3">
+          <img class="demo cursor" src="project_images/project10.png" style="width:100%" onclick="currentSlide3(2)" alt="Products Page">
+        </div>
+      </div>
+    </div>
+    <div style="background-color:black; height:2px;"></div>
+
+    <h2>Project 4</h2>
+    <p style="text-align: justify;">This project was during the orientation phase at Fontys. I made a Guess The Word game in Figma but did not fully finish it in HTML.</p>
+    <div class="slide_container4">
+
+      <div class="mySlides4">
+        <div class="numbertext">1 / 6</div>
+          <img src="project_images/project12.png" style="width:100%">
+      </div>
+
+      <div class="mySlides4">
+        <div class="numbertext">2 / 6</div>
+          <img src="project_images/project13.png" style="width:100%">
+      </div>
+
+      <div class="mySlides4">
+        <div class="numbertext">3 / 6</div>
+          <img src="project_images/project14.png" style="width:100%">
+      </div>
+
+      <div class="mySlides4">
+        <div class="numbertext">4 / 6</div>
+          <img src="project_images/project15.png" style="width:100%">
+      </div>
+
+      <div class="mySlides4">
+        <div class="numbertext">5 / 6</div>
+          <img src="project_images/project16.png" style="width:100%">
+      </div>
+
+      <div class="mySlides4">
+        <div class="numbertext">6 / 6</div>
+          <img src="project_images/project17.png" style="width:100%">
+      </div>
+
+      <a class="prev4" onclick="plusSlides4(-1)">&#10094;</a>
+      <a class="next4" onclick="plusSlides4(1)">&#10095;</a>
+
+      <div class="row">
+        <div class="column4">
+          <img class="demo cursor" src="project_images/project12.png" style="width:100%" onclick="currentSlide4(1)" alt="Home Page">
+        </div>
+        <div class="column4">
+          <img class="demo cursor" src="project_images/project13.png" style="width:100%" onclick="currentSlide4(2)" alt="Products Page">
+        </div>
+        <div class="column4">
+          <img class="demo cursor" src="project_images/project14.png" style="width:100%" onclick="currentSlide4(3)" alt="Product Page">
+        </div>
+        <div class="column4">
+          <img class="demo cursor" src="project_images/project15.png" style="width:100%" onclick="currentSlide4(4)" alt="Payment Page">
+        </div>
+        <div class="column4">
+          <img class="demo cursor" src="project_images/project16.png" style="width:100%" onclick="currentSlide4(5)" alt="Terms&Conditions Page">
+        </div>
+        <div class="column4">
+          <img class="demo cursor" src="project_images/project17.png" style="width:100%" onclick="currentSlide4(6)" alt="Contact Page">
+        </div>
+      </div>
+    </div>
+    <div style="background-color:black; height:2px;"></div>
+    
+    <h2>Project 5</h2>
+    <p style="text-align: justify;">This was our last project in the orientation phase. We were tasked with making a system for a pizzeria, these were the pages I worked on.</p>
+    <div class="slide_container5">
+
+      <div class="mySlides5">
+        <div class="numbertext">1 / 3</div>
+          <img src="project_images/project18.png" style="width:100%">
+      </div>
+
+      <div class="mySlides5">
+        <div class="numbertext">2 / 3</div>
+          <img src="project_images/project19.png" style="width:100%">
+      </div>
+
+      <div class="mySlides5">
+        <div class="numbertext">3 / 3</div>
+          <img src="project_images/project20.png" style="width:100%">
+      </div>
+
+      <a class="prev5" onclick="plusSlides5(-1)">&#10094;</a>
+      <a class="next5" onclick="plusSlides5(1)">&#10095;</a>
+
+      <div class="row">
+        <div class="column5">
+          <img class="demo cursor" src="project_images/project18.png" style="width:100%" onclick="currentSlide5(1)" alt="Home Page">
+        </div>
+        <div class="column5">
+          <img class="demo cursor" src="project_images/project19.png" style="width:100%" onclick="currentSlide5(2)" alt="Products Page">
+        </div>
+        <div class="column5">
+          <img class="demo cursor" src="project_images/project20.png" style="width:100%" onclick="currentSlide5(3)" alt="Product Page">
+        </div>
+      </div>
+    </div>
+    <div style="background-color:black; height:2px;"></div>
+
+  </div>
+
+  <footer>
+    <img class="footeri" src="image/footer.png" alt="footeri">
+  </footer>
+</body>
+<script>
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("demo");
+    let captionText = document.getElementById("caption");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    captionText.innerHTML = dots[slideIndex-1].alt;
+  }
+</script>
+  <script>
+  let slideIndex2 = 1;
+  showSlides2(slideIndex2);
+
+  function plusSlides2(n) {
+    showSlides2(slideIndex2 += n);
+  }
+
+  function currentSlide2(n) {
+    showSlides2(slideIndex2 = n);
+  }
+
+  function showSlides2(n) {
+    let i;
+    let slides2 = document.getElementsByClassName("mySlides2");
+    let dots2 = document.getElementsByClassName("demo2");
+    let captionText2 = document.getElementById("caption2");
+    if (n > slides2.length) {slideIndex2 = 1}
+    if (n < 1) {slideIndex2 = slides2.length}
+    for (i = 0; i < slides2.length; i++) {
+      slides2[i].style.display = "none";
+    }
+    for (i = 0; i < dots2.length; i++) {
+      dots2[i].className = dots2[i].className.replace(" active", "");
+    }
+    slides2[slideIndex2-1].style.display = "block";
+    dots2[slideIndex2-1].className += " active";
+    captionText2.innerHTML = dots2[slideIndex2-1].alt;
+  }
+</script>
+  <script>
+  let slideIndex3 = 1;
+  showSlides3(slideIndex3);
+
+  function plusSlides3(n) {
+    showSlides3(slideIndex3 += n);
+  }
+
+  function currentSlide3(n) {
+    showSlides3(slideIndex3 = n);
+  }
+
+  function showSlides3(n) {
+    let i;
+    let slides3 = document.getElementsByClassName("mySlides3");
+    let dots3 = document.getElementsByClassName("demo3");
+    let captionText3 = document.getElementById("caption3");
+    if (n > slides3.length) {slideIndex3 = 1}
+    if (n < 1) {slideIndex3 = slides3.length}
+    for (i = 0; i < slides3.length; i++) {
+      slides3[i].style.display = "none";
+    }
+    for (i = 0; i < dots3.length; i++) {
+      dots3[i].className = dots3[i].className.replace(" active", "");
+    }
+    slides3[slideIndex3-1].style.display = "block";
+    dots3[slideIndex3-1].className += " active";
+    captionText3.innerHTML = dots3[slideIndex3-1].alt;
+  }
+</script>
+  <script>
+  let slideIndex4 = 1;
+  showSlides4(slideIndex4);
+
+  function plusSlides4(n) {
+    showSlides4(slideIndex4 += n);
+  }
+
+  function currentSlide4(n) {
+    showSlides4(slideIndex4 = n);
+  }
+
+  function showSlides4(n) {
+    let i;
+    let slides4 = document.getElementsByClassName("mySlides4");
+    let dots4 = document.getElementsByClassName("demo4");
+    let captionText4 = document.getElementById("caption4");
+    if (n > slides4.length) {slideIndex4 = 1}
+    if (n < 1) {slideIndex4 = slides4.length}
+    for (i = 0; i < slides4.length; i++) {
+      slides4[i].style.display = "none";
+    }
+    for (i = 0; i < dots4.length; i++) {
+      dots4[i].className = dots4[i].className.replace(" active", "");
+    }
+    slides4[slideIndex4-1].style.display = "block";
+    dots4[slideIndex4-1].className += " active";
+    captionText4.innerHTML = dots2[slideIndex4-1].alt;
+  }
+</script>
+  <script>
+  let slideIndex5 = 1;
+  showSlides5(slideIndex5);
+
+  function plusSlides5(n) {
+    showSlides5(slideIndex5 += n);
+  }
+
+  function currentSlide5(n) {
+    showSlides5(slideIndex5 = n);
+  }
+
+  function showSlides5(n) {
+    let i;
+    let slides5 = document.getElementsByClassName("mySlides5");
+    let dots5 = document.getElementsByClassName("demo5");
+    let captionText5 = document.getElementById("caption5");
+    if (n > slides5.length) {slideIndex5 = 1}
+    if (n < 1) {slideIndex5 = slides5.length}
+    for (i = 0; i < slides5.length; i++) {
+      slides5[i].style.display = "none";
+    }
+    for (i = 0; i < dots5.length; i++) {
+      dots5[i].className = dots5[i].className.replace(" active", "");
+    }
+    slides5[slideIndex5-1].style.display = "block";
+    dots5[slideIndex5-1].className += " active";
+    captionText5.innerHTML = dots5[slideIndex5-1].alt;
+  }
+</script>
+<script>
+  // Get the button:
+  let mybutton = document.getElementById("myBtn");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+</script>
+</html>
